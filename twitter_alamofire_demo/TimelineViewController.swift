@@ -28,8 +28,8 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         self.refreshControl?.addTarget(self, action: #selector(refreshControlAction), for:.valueChanged)
        self.tableView.addSubview(refreshControl)
         
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
+//        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 100
         
 //        APIManager.shared.getHomeTimeLine { (tweets, error) in
 //            if let tweets = tweets {
