@@ -97,7 +97,7 @@ class TweetCell: UITableViewCell {
             tweetTextLabel.text = tweet.text
             userLabel.text = tweet.user.name
             screennameLabel.text = "@"+tweet.user.screenName!
-            createdatLabel.text = tweet.user.createdat
+            createdatLabel.text = tweet.createdAtString
             profileImage.af_setImage(withURL: tweet.user.posterUrl!)
             nretweetLabel.text = String(tweet.retweetCount)
             nfavoriteLabel.text = String(tweet.favoriteCount)

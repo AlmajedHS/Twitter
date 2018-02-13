@@ -23,6 +23,7 @@ class User {
         name = dictionary["name"] as! String
         screenName = dictionary["screen_name"] as? String
      createdat = dictionary["created_at"] as? String
+        
         posterPath = dictionary["profile_image_url_https"] as? String
         posterUrl = URL(string: posterPath!)
         

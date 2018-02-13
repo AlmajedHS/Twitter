@@ -41,16 +41,22 @@ class Tweet {
         self.user = User(dictionary: user)
         
         let createdAtOriginalString = dictionary["created_at"] as! String
+      //  print("this : " + createdAtOriginalString)
         let formatter = DateFormatter()
         // Configure the input format to parse the date string
         formatter.dateFormat = "E MMM d HH:mm:ss Z y"
         // Convert String to Date
+       
         let date = formatter.date(from: createdAtOriginalString)!
+       formatter.dateFormat = "MM/dd/yyyy"
         // Configure output format
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
+//    formatter.dateStyle = .short
+//        formatter.timeStyle = .none
         // Convert Date to String
+        
         createdAtString = formatter.string(from: date)
+        
+       //  print("this : " + createdAtString)
         
         
     }
