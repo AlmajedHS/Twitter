@@ -79,6 +79,23 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func didTapLogout(_ sender: Any) {
         APIManager.shared.logout()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc = segue.destination as! TweetViewController
+        
+        vc.photoI = (sender! as! TweetCell).profileImage.image
+        vc.userNamepassed = (sender! as! TweetCell).userLabel.text!
+         vc.userprofilePassed = (sender! as! TweetCell).screennameLabel.text!
+         vc.datePassed = (sender! as! TweetCell).createdatLabel.text!
+         vc.numberFavorites = (sender! as! TweetCell).nfavoriteLabel.text!
+        vc.numberRetweets = (sender! as! TweetCell).nretweetLabel.text!
+        vc.tweetPassed = (sender! as! TweetCell).tweet.text
+    
+        
+        
+        
+    }
+    
     
     
     /*
