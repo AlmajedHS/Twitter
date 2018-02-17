@@ -216,9 +216,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="9Zi-uW-GTS">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="hz2-ji-ft0">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="hz2-ji-ft0">
                             <connections>
                                 <action selector="didTapLogout:" destination="5YO-Vh-39k" id="fM7-h5-mq1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="Scj-is-KeL">
+                            <connections>
+                                <action selector="didTapPost:" destination="5YO-Vh-39k" id="5ZZ-TA-4iO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -229,6 +234,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlF-i2-Ves" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1660" y="36.431784107946029"/>
+        </scene>
+        <!--Tweet-->
+        <scene sceneID="j8X-Ll-101">
+            <objects>
+                <viewController storyboardIdentifier="ComposeViewController" id="jcD-1P-Any" customClass="ComposeViewController" customModule="twitter_alamofire_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1ke-C0-Fl8"/>
+                        <viewControllerLayoutGuide type="bottom" id="z6t-dy-qDU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S8b-2A-Edg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tesssst" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDk-Ja-FOg">
+                                <rect key="frame" x="143" y="206" width="216" height="309"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Tweet" id="sWg-d6-XnO">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="elO-IH-82W">
+                            <connections>
+                                <action selector="didTapCancel:" destination="jcD-1P-Any" id="QAC-vN-ht6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="kX7-Gc-jmo">
+                            <connections>
+                                <action selector="didTapPost:" destination="jcD-1P-Any" id="43z-2t-q7D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J2h-ib-mYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2000.8" y="763.26836581709154"/>
         </scene>
         <!--Tweet View Controller-->
         <scene sceneID="MOP-TJ-6YL">
@@ -362,6 +408,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHk-jg-Lk3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="860" y="36.431784107946029"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MZ3-mB-dTG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vvx-ba-mpz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vfg-fs-vLu">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jcD-1P-Any" kind="relationship" relationship="rootViewController" id="C5F-NB-VU8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8R9-wm-17P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257" y="763"/>
         </scene>
     </scenes>
     <resources>

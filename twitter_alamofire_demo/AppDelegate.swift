@@ -24,6 +24,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
             self.window?.rootViewController = loginVC
         }
+        NotificationCenter.default.addObserver(forName: Notification.Name("didPost"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("post notification received")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let composeVC = storyboard.instantiateViewController(withIdentifier: "ComposeViewController")
+            self.window?.rootViewController = composeVC
+        }
+        if User.current == nil {
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            self.window?.rootViewController = loginVC
+        }else{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeTimelineViewController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+            window?.rootViewController = homeTimelineViewController
+
+
+        }
+        
         
         return true
     }
