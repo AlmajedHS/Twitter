@@ -8,7 +8,11 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate {
+    func did(post: Tweet) {
+        
+    }
+    
     
     var tweets: [Tweet] = []
     var refreshControl: UIRefreshControl!
@@ -76,7 +80,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func didTapPost(_ sender: Any) {
-        APIManager.shared.post()
+        APIManager.shared.postTimeLine()
     }
     
     @IBAction func didTapLogout(_ sender: Any) {
@@ -85,7 +89,9 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let vc = segue.destination as! TweetViewController
+        let vc1 = segue.destination as! ComposeViewController
         
+         vc.tweetI = (sender! as! TweetCell).tweet
         vc.photoI = (sender! as! TweetCell).profileImage.image
         vc.userNamepassed = (sender! as! TweetCell).userLabel.text!
          vc.userprofilePassed = (sender! as! TweetCell).screennameLabel.text!
@@ -93,6 +99,8 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
          vc.numberFavorites = (sender! as! TweetCell).nfavoriteLabel.text!
         vc.numberRetweets = (sender! as! TweetCell).nretweetLabel.text!
         vc.tweetPassed = (sender! as! TweetCell).tweet.text
+        
+        vc1.delegate = self
     
         
         

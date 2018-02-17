@@ -8,10 +8,24 @@
 
 import UIKit
 
-class ComposeViewController: UIViewController {
 
+protocol ComposeViewControllerDelegate : class {
+    func did(post: Tweet)
+}
+
+
+class ComposeViewController: UIViewController,UITextViewDelegate {
+
+    @IBOutlet weak var textFieldText: UITextView!
+    
+    weak var delegate: ComposeViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.textFieldText = RSKPlaceholderTextView(frame: CGRect(x: 0, y: 20, width: self.view.frame.width, height: 100))
+//        self.textFieldText.placeholder = "What do you want to say about this event?"
+//        
+//        self.view.addSubview(self.textFieldText)
 
         // Do any additional setup after loading the view.
     }
@@ -22,12 +36,23 @@ class ComposeViewController: UIViewController {
     }
     
     @IBAction func didTapPost(_ sender: Any) {
-        print("tap post")
+        APIManager.shared.composeTweet(with: textFieldText.text) { (tweet, error) in
+            if let error = error {
+                print("Error composing Tweet: \(error.localizedDescription)")
+            } else if let tweet = tweet {
+                self.delegate?.did(post: tweet)
+                print("Compose Tweet Success!")
+                 APIManager.shared.post()
+            }
+        }
+      
+        
     }
     
     @IBAction func didTapCancel(_ sender: Any) {
-        print("tap cancel")
+        APIManager.shared.cancelButton()
     }
+   
     
     /*
     // MARK: - Navigation

@@ -24,12 +24,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
             self.window?.rootViewController = loginVC
         }
-        NotificationCenter.default.addObserver(forName: Notification.Name("didPost"), object: nil, queue: OperationQueue.main) { (Notification) in
-            print("post notification received")
+        NotificationCenter.default.addObserver(forName: Notification.Name("didPostTimeLine"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("post timeline notification received")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let composeVC = storyboard.instantiateViewController(withIdentifier: "ComposeViewController")
+            let composeVC = storyboard.instantiateViewController(withIdentifier: "ComposeNavController")
             self.window?.rootViewController = composeVC
         }
+        NotificationCenter.default.addObserver(forName: Notification.Name("didCancel"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("cancel notification received")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let timelineVC = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+            self.window?.rootViewController = timelineVC
+        }
+        NotificationCenter.default.addObserver(forName: Notification.Name("didPostTweet"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("post tweet notification received")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let timelineVC = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+            self.window?.rootViewController = timelineVC
+        }
+        
         if User.current == nil {
 
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
