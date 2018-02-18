@@ -14,7 +14,12 @@ class User {
     var screenName: String?
     var createdat: String?
     var posterUrl: URL?
+    var headerUrl: URL?
+    var numFollowers: Int = 0
+    var numFollowing: Int = 0
+    var numTweets: Int = 0
     var posterPath: String?
+    var headerPath: String?
     var dictionary: [String: Any]?
     
     
@@ -26,10 +31,17 @@ class User {
         
         name = dictionary["name"] as! String
         screenName = dictionary["screen_name"] as? String
-     createdat = dictionary["created_at"] as? String
+        createdat = dictionary["created_at"] as? String
         
         posterPath = dictionary["profile_image_url_https"] as? String
         posterUrl = URL(string: posterPath!)
+       // print("post: " + posterPath!)
+        numFollowers = (dictionary["followers_count"] as? Int) ?? 0
+         numFollowing = (dictionary["friends_count"] as? Int) ?? 0
+         numTweets = (dictionary["statuses_count"] as? Int) ?? 0
+        
+        
+    
         
         
     }

@@ -45,7 +45,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
 //        }
     }
     
-    func refreshControlAction() {
+    @objc func refreshControlAction() {
         
         APIManager.shared.getHomeTimeLine { (tweets, error) in
             if let tweets = tweets {
@@ -80,16 +80,17 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func didTapPost(_ sender: Any) {
-        APIManager.shared.postTimeLine()
+       // APIManager.shared.postTimeLine()
     }
     
     @IBAction func didTapLogout(_ sender: Any) {
         APIManager.shared.logout()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "detailsSegue" {
+            print("reach")
         let vc = segue.destination as! TweetViewController
-        let vc1 = segue.destination as! ComposeViewController
+        //let vc1 = segue.destination as! ComposeViewController
         
          vc.tweetI = (sender! as! TweetCell).tweet
         vc.photoI = (sender! as! TweetCell).profileImage.image
@@ -99,8 +100,14 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
          vc.numberFavorites = (sender! as! TweetCell).nfavoriteLabel.text!
         vc.numberRetweets = (sender! as! TweetCell).nretweetLabel.text!
         vc.tweetPassed = (sender! as! TweetCell).tweet.text
+        }
         
-        vc1.delegate = self
+        else if segue.identifier == "postTweetSegue"{
+
+            
+        }
+        
+      //  vc1.delegate = self
     
         
         
