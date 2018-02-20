@@ -40,6 +40,8 @@ class User {
          numFollowing = (dictionary["friends_count"] as? Int) ?? 0
          numTweets = (dictionary["statuses_count"] as? Int) ?? 0
         
+//        headerPath = dictionary["profile_image_url_https"] as? String
+//        headerUrl = URL(string: headerPath!)
         
     
         
